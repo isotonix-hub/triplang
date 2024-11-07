@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -56,10 +56,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-
             function authentication() {
-                const name = ["Ronie pogi" , null , "hello world" , "panget" ,"pogi"]
-                const age = [21,null,23,55,23]    
+                const name = ["Ronie pogi", "hellopo", "hello world", "panget", "pogi"];
+                const age = [21, 21, 23, 55, 23];
                 const id = [1, 2, 3, 4, 5];
                 const username_list = ["Ronie", "admin2", "admin3", "admin4", "admin5"];
                 const password_list = ["galgo", "2", "3", "4", "5"];
@@ -68,35 +67,31 @@
                     const username = document.getElementById("username").value;
                     const password = document.getElementById("password").value;
 
-                    let credentials = false;    
+                    let credentials = false;
 
-                    // Check credentials
                     for (let i = 0; i < username_list.length; i++) {
                         if (username_list[i] === username && password_list[i] === password) {
-                           
-                            localStorage.setItem("id_item", id[i].toString());
-                            localStorage.setItem("name", name[i]);
-                            localStorage.setItem("age", age[i].toString());
+                            if (!localStorage.getItem("name")) {
+                            
+                                localStorage.setItem("id_item", id[i].toString());
+                                localStorage.setItem("name", name[i]);
+                                localStorage.setItem("age", age[i].toString());
+                            }
                             credentials = true;
                             break;
                         }
                     }
 
-                  
                     if (credentials) {
                         window.location.href = "2ndpage.html";
-                        
-                    
                     } else {
                         window.alert("Wrong credentials");
                     }
 
-                    
                     document.getElementById("username").value = "";
                     document.getElementById("password").value = "";
                 }
 
-               
                 document.getElementById("enter_button").addEventListener("click", attempt_login);
                 document.getElementById("username").addEventListener("keydown", (event) => {
                     if (event.key === "Enter") attempt_login();
@@ -109,6 +104,7 @@
             authentication();
         });
     </script>
+
 
 </body>
 </html>
